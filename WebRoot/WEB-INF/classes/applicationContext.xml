@@ -1,0 +1,71 @@
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	">
+	<!-- 开启注解扫描 -->
+	<context:component-scan base-package="com.kz.crm"></context:component-scan>
+	<!-- 加载数据库信息文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<!-- 数据源:dbcp 
+		spring集成了多种数据源：dbcp  c3p0   jdbc.....
+	-->
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<!-- 配置sessionFactory  spring-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 加载配置文件hibernate.cfg.xml -->
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	<!-- 注册事务管理器：spring -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 申明式事物
+		1，通知(advice):  事务管理器+横切面连接点
+		2, 切面(advisor)：通知+切点
+		3，植入(weaver)：将通知入侵到切面
+	 -->
+	 <!--1，通知(advice):  -->
+	<tx:advice id="kzadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	<!--aspect自动生成代理  -->
+	<aop:config>
+		<!--切点 -->
+		<aop:pointcut expression="execution(* com.kz.crm.service.impl.*.*(..))" id="kzpoint"/>
+		<!-- 切面 -->
+		<aop:advisor advice-ref="kzadvice" pointcut-ref="kzpoint"/>
+	</aop:config>
+</beans>
+
+
+
+
+
+
