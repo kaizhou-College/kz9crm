@@ -1,6 +1,6 @@
 .myeclipse/
 .settings/
-.class
+*.class
 
 *.MF
 
