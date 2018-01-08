@@ -1,10 +1,10 @@
 .myeclipse/
 .settings/
-.class
+*.class
 
 *.MF
 
-/classes/
+classes/
 
 .classpath
 .mymetadata
