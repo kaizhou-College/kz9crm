@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.kz.crm.entity.SalChance;
+import com.kz.crm.entity.SalChanceQuery;
 import com.kz.crm.service.SalChanceService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,6 +18,14 @@ public class SalChanceAction extends ActionSupport{
 	private SalChanceService salChanceService;
 	
 	private List<SalChance> chances;
+	
+	private SalChanceQuery scq;
+	public List<SalChance> getChances() {
+		return chances;
+	}
+	public void setChances(List<SalChance> chances) {
+		this.chances = chances;
+	}
 	/**
 	 * 
 	 * 分页查询销售机会的信息
@@ -33,4 +42,21 @@ public class SalChanceAction extends ActionSupport{
 		}
 		return "list_success";
 	}
+	/**
+	 * 根据条件来进行查询（+分页）
+	 */
+	public String listByCondition(){
+		System.out.println("进入action"+scq);
+		//没有写条件查询 直接写分页查询 这个是不行的 为了测试
+		chances = salChanceService.findByPage(1,10);
+		return "lislTemplate";
+		
+	}
+	public SalChanceQuery getScq() {
+		return scq;
+	}
+	public void setScq(SalChanceQuery scq) {
+		this.scq = scq;
+	}
+	
 }

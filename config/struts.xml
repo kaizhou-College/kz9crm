@@ -3,10 +3,11 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="kzdefault" namespace="/" extends="struts-default">
+	<package name="kzdefault" namespace="/html" extends="struts-default">
 		<action name="sale_*" class="salChanceAction" method="{1}">
-			<result name="list_error">index.jsp</result>
-			<result name="list_success">index.jsp</result>
+			<result name="list_error">~sale/index.jsp</result>
+			<result name="list_success">~sale/list.jsp</result>
+			<result name="lislTemplate">~sale/listTemplate.jsp</result>
 		</action>
 	</package>
 </struts>
