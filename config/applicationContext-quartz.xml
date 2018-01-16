@@ -41,10 +41,10 @@
 		</property>		
 		<property name="cronExpression">
 			<!-- cron表达式:周六凌晨02：00系统自动检查订单数据， -->
-			<!-- <value>0 0 2 * * SAT</value> -->
+			 <value>0 0 2 ? * SAT</value> 
 			<!--  -->
 			<!-- cron表达式:每5分钟触发一次 -->
-			<value>0/5 * * * * ?</value>
+			<!--<value>0/5 * * * * ?</value>-->
 		</property>
 	</bean>
 </beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+	schema:用户
+	catalog:数据库
+-->
+<hibernate-mapping>
+    <class name="com.kz.crm.entity.SysUser" table="sys_user" schema="kz9crm">
+         <id name="usrId" type="java.lang.Long">
+            <column name="usr_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sysRole" class="com.kz.crm.entity.SysRole" lazy="false">
+            <column name="usr_role_id" />
+        </many-to-one>
+        <property name="usrName" type="java.lang.String">
+            <column name="usr_name" not-null="true" />
+        </property>
+        <property name="usrPassword" type="java.lang.String">
+            <column name="usr_password" not-null="true" />
+        </property>
+        <property name="usrFlag" type="java.lang.Integer">
+            <column name="usr_flag" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

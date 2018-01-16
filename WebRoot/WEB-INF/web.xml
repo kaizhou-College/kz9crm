@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
- <!-- spring的核心配置 -->
- <listener>
-	<!-- 监听器默认加载的是WEB-INF/applicationContext.xml -->
-	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-</listener>
 
-<!-- 指定Spring框架的配置文件所在的位置 -->
-<context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>classpath:applicationContext*.xml</param-value>
-</context-param>
- 
- <!-- struts2核心过滤器 -->
-  <filter>
-  	<filter-name>struts2</filter-name>
-  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>struts2</filter-name>
-  	<!-- 过滤所有请求 -->
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
- 
- 
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+	
+
+	<!-- spring的核心配置 -->
+	<listener>
+		<!-- 监听器默认加载的是WEB-INF/applicationContext.xml -->
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 指定Spring框架的配置文件所在的位置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext*.xml</param-value>
+	</context-param>
+	
+	
+	
+
+	<!-- struts2核心过滤器 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<!-- 过滤所有请求 -->
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+<!--
+		web懒加载 Web懒加载 ，加载User对象 报错 Service层：事物结束 session关闭 解决方案： 
+		1）改为及时加载get或者手动初始化对象 
+		2）关闭懒加载 lazy=false 
+		3）使用openSessionInView 
+			spring提供的过滤器,可以在web层开启事物
+	-->
+	<filter>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

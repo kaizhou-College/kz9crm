@@ -27,6 +27,31 @@
 	导入：
 		spring-context-support-3.2.0.RELEASE.jar
 		quartz-all-1.6.1.jar
+六：权限管理-------->用户
+	1，在登录就必须处理权限管理
+	2，crm系统中权限管理所涉及的表
+	 sys_user： 用户表
+	 
+	 sys_role： 角色表
+	 	角色：一些列权限的集合(职位)
+	 
+	 sys_role_right:角色权限表
+	 	
+	 sys_rigths:权限表
+	 
+	 关系：
+	 	sys_user与sys_role是多对一
+	 	sys_role与sys_rights是多对多
+
+	 	
+	 
+	 
+	 	
+	 	
+	 
+	 	
+		
+	
 	
 	
 	

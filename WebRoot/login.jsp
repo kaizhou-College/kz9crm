@@ -1,3 +1,6 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@include file="html/common/com.jsp"%> 
+
 <HTML>
 <HEAD>
 <TITLE>login_</TITLE>
@@ -18,6 +21,30 @@
 		border:solid 1px lightblue;
 	}
 </style>
+<script type="text/javascript" src="${basePath}/html/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn_login").click(function(){
+			//æäº¤è¡¨å•
+			$("#frm").submit();
+			/*$.ajax({
+				type:"POST",
+				url:"html/user_login",
+				data:{"user.usrName":$("#usrName").val(),"user.usrPassword":$("#usrPwd").val()},
+				success:function(data){
+					//alert("login success!!");
+				},
+				error:function(){
+					alert("login failed!!!");
+				}
+				
+			
+			});*/
+		});
+	});
+	
+
+</script>
 </HEAD>
 <BODY BGCOLOR=#FFFFFF LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 style="text-align:center;padding-top:20px;">
 <TABLE WIDTH=800 BORDER=0 CELLPADDING=0 CELLSPACING=0>
@@ -63,21 +90,22 @@
 			<IMG SRC="html/images/login/login_09.jpg" WIDTH=15 HEIGHT=141 ALT=""></TD>
 		
     <TD COLSPAN=2 ROWSPAN=2 background="html/images/login/login_10.jpg" >
+<form  id="frm" action="html/user_login" method="post">
 <table width="100%">
         <tr> 
-          <th>ÓÃ»§Ãû</th>
-          <td><input size="10" maxlength="20" /></td>
+          <th>ç”¨æˆ·å</th>
+          <td><input size="10" value="hlliu" maxlength="20" id="usrName" name="user.usrName"/></td>
         </tr>
         <tr> 
-          <th>ÃÜÂë</th>
-          <td><input type="password" size="10" maxlength="20" /></td>
+          <th>å¯†ç </th>
+          <td><input type="password" size="10" maxlength="20" id="usrPwd" value="pwd" name="user.usrPassword"/></td>
         </tr>
         <tr> 
           <td>&nbsp;</td>
-          <td><img onclick="window.location.href='html/index.html'" src="html/images/login/login_button.jpg" width="73" height="25"></td>
+          <td><img id="btn_login"src="html/images/login/login_button.jpg" width="73" height="25"></td>
         </tr>
       </table>
-
+</form>
 	
     </TD>
 		<TD COLSPAN=2>
@@ -108,7 +136,7 @@
 	<TR>
 		
     <TD COLSPAN=7 background="html/images/login/login_16.jpg" style="text-align:right;padding-right:25px;"> 
-			&copy; 2008 ±±¾©°¢²©Ì©¿Ë±±´óÇàÄñĞÅÏ¢¼¼ÊõÓĞÏŞ¹«Ë¾
+			&copy; 2018é•¿æ²™å‡¯èˆŸæ•™è‚²ä¿¡æ¯æŠ€æœ¯æœ‰é™å…¬å¸
     </TD>
 		<TD>
 			<IMG SRC="html/images/login/spacer.gif" WIDTH=1 HEIGHT=55 ALT=""></TD>

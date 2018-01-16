@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="common/com.jsp"  %>
+
 <HTML>
 <HEAD>
 <TITLE>客户关系管理系统</TITLE>
@@ -894,8 +895,8 @@ function initialise() {
 	l2ID = theMenu.addEntry(-1, "Folder", "客户关系管理系统", "mywork.htm", "客户关系管理系统");
 
 
-	
-	
+	/*
+
 	L01 = theMenu.addChild(l2ID, "Folder", "营销管理", "", "营销管理...");
 	L0101 = theMenu.addChild(L01, "Document", "销售机会管理", "${basePath}/html/sale_list.action", "销售机会管理...");
 	L0102 = theMenu.addChild(L01, "Document", "客户开发计划", "~sale/dev.html", "客户开发计划...");
@@ -924,8 +925,8 @@ function initialise() {
 	L0502 = theMenu.addChild(L05, "Document", "查询产品信息", "~basd/product.html", "查询产品信息...");
 	L0503 = theMenu.addChild(L05, "Document", "查询库存", "~basd/storage.html", "查询库存...");
      
-
-        
+*/
+    ${rightStr}
 	theMenu.entry[l2ID].isopen = true;
 }
 
@@ -973,3 +974,5 @@ Your browser does not support JavaScript
 </NOSCRIPT>
 
 </HTML>
+
+

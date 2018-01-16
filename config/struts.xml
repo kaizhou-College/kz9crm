@@ -9,5 +9,12 @@
 			<result name="list_success">~sale/list.jsp</result>
 			<result name="lislTemplate">~sale/listTemplate.jsp</result>
 		</action>
+		<action name="user_*" class="sysUserAction" method="{1}">
+			<result name="login_success">index.jsp</result>
+		</action>
+		
+		<action name="role_*" class="sysRoleAction" method="{1}">
+			<result name="list_success">~right/role/list.jsp</result>
+		</action>
 	</package>
 </struts>
