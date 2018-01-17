@@ -25,6 +25,9 @@
 	<bean id="sysRoleDaoImpl" class="com.kz.crm.dao.impl.SysRoleDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="sysRightDaoImpl" class="com.kz.crm.dao.impl.SysRightDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 </beans>
 
 

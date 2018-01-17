@@ -13,16 +13,6 @@ import com.kz.crm.entity.SysRole;
 import com.kz.crm.entity.SysRoleQuery;
 
 public class SysRoleDaoImpl extends HibernateDaoSupport implements SysRoleDao {
-	public List<SysRole> seleRoleByPage(SysRoleQuery srq) {
-		Session session = this.getSession();
-		Query query = session.createQuery("from SysRole");
-		
-		int start = (srq.getCurPage()-1)*srq.getPageSize();
-		int end = srq.getPageSize();
-		query.setFirstResult(start);//开始行
-		query.setMaxResults(end);//查询多少行
-		return query.list();
-	}
 
 	public List<SysRole> findAll() {
 		Session session = this.getSession();
@@ -49,6 +39,16 @@ public class SysRoleDaoImpl extends HibernateDaoSupport implements SysRoleDao {
 		.setParameter(0, roleId)
 		.list();
 		return rights;
+	}
+
+	public List<SysRole> findByPage(SysRoleQuery srq) {
+		Session session = this.getSession();
+		Query query = session.createQuery("from SysRole");
+		
+		int start = (srq.getCurPage()-1)*srq.getPageSize();
+		query.setFirstResult(start);
+		query.setMaxResults(srq.getPageSize());
+		return query.list();
 	}
 
 }

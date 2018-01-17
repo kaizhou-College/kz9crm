@@ -96,7 +96,7 @@
 						<c:if test="${role.roleFlag==1}">
 							<img onclick="to('role.do?o=toEditSysRole&roleId=${role.roleId}');"
 								title="编辑" src="${basePath}/html/images/bt_edit.gif" class="op_button" />
-							<a href="role_listRightByRole.action&roleId=${role.roleId }">
+							<a href="${basePath}/html/role_listRightByRole.action?role.roleId=${role.roleId}">
 								<img title="分配权限" src="${basePath}/html/images/bt_linkman.gif" class="op_button" />
 							</a>
 						</c:if>

@@ -15,6 +15,7 @@
 		
 		<action name="role_*" class="sysRoleAction" method="{1}">
 			<result name="list_success">~right/role/list.jsp</result>
+			<result name="listRight_success">~right/role/roleRight.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -1,5 +1,6 @@
 package com.kz.crm.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import com.kz.crm.dao.SysRoleDao;
 import com.kz.crm.entity.SysRight;
 import com.kz.crm.entity.SysRole;
 import com.kz.crm.entity.SysRoleQuery;
+import com.kz.crm.service.SysRightService;
 import com.kz.crm.service.SysRoleService;
 
 //<bean id="roleService" class="com.kz.service.impl.RoleServiceImpl"></bean>
@@ -16,10 +18,9 @@ import com.kz.crm.service.SysRoleService;
 public class SysRoleServiceImpl implements SysRoleService {
 	@Autowired
 	private SysRoleDao rd;
-
-	public List<SysRole> selRoleByPage(SysRoleQuery srq) {
-		return rd.seleRoleByPage(srq);
-	}
+	
+	@Autowired
+	private SysRightService rightService;
 
 	public List<SysRole> list() {
 		return rd.findAll();
@@ -50,6 +51,28 @@ public class SysRoleServiceImpl implements SysRoleService {
 		L0102 = theMenu.addChild(L01, "Document", "客户开发计划", "~sale/dev.html", "客户开发计划...");
 */
 		return rightStr.toString();
+	}
+
+	public List<SysRole> listByPage(SysRoleQuery srq) {
+		
+		return rd.findByPage(srq);
+	}
+	public void updateRights(String[] currentRightsStr, Long roleId) {
+		List<SysRight> rights = new ArrayList<SysRight>();
+		//1,得到所有的权限对象
+		for(String rightText:currentRightsStr){
+			SysRight sr = rightService.findRightByText(rightText);
+			rights.add(sr);
+		}
+		
+		//2,得到当前角色
+		System.out.println("当前角色的id==="+ roleId);
+		SysRole currentRole =findRole(roleId);;
+		//3,更新第3方表的数据---相互认识
+		for(SysRight right:rights){
+			right.getRoles().add(currentRole);
+			currentRole.getRights().add(right);
+		}
 	}
 
 }

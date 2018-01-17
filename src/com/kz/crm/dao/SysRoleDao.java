@@ -8,12 +8,13 @@ import com.kz.crm.entity.SysRoleQuery;
 
 public interface SysRoleDao {
 
-	List<SysRole> seleRoleByPage(SysRoleQuery srq);
 
 	List<SysRole> findAll();
 
 	SysRole findRole(Long roleId);
 
 	List<SysRight> findRightsByRole(Long roleId);
+
+	List<SysRole> findByPage(SysRoleQuery srq);
 
 }
