@@ -25,7 +25,7 @@
         <property name="rightTip" type="java.lang.String">
             <column name="right_tip" length="50" />
         </property>
-        <set name="roles" table="sys_role_right"  lazy="false">
+        <set name="roles" table="sys_role_right">
             <key>
                 <column name="rf_right_code" length="50" not-null="true" />
             </key>

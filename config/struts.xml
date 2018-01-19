@@ -4,18 +4,18 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="kzdefault" namespace="/html" extends="struts-default">
-		<action name="sale_*" class="salChanceAction" method="{1}">
-			<result name="list_error">~sale/index.jsp</result>
-			<result name="list_success">~sale/list.jsp</result>
-			<result name="lislTemplate">~sale/listTemplate.jsp</result>
+		<action name="/sale/*" class="salChanceAction" method="{1}">
+			<result name="list_error">index.jsp</result>
+			<result name="list_success">list.jsp</result>
+			<result name="lislTemplate">listTemplate.jsp</result>
 		</action>
-		<action name="user_*" class="sysUserAction" method="{1}">
-			<result name="login_success">index.jsp</result>
+		<action name="/user/*" class="sysUserAction" method="{1}">
+			<result name="login_success">/html/index.jsp</result>
 		</action>
 		
-		<action name="role_*" class="sysRoleAction" method="{1}">
-			<result name="list_success">~right/role/list.jsp</result>
-			<result name="listRight_success">~right/role/roleRight.jsp</result>
+		<action name="/right/role/*" class="sysRoleAction" method="{1}">
+			<result name="list_success">list.jsp</result>
+			<result name="listRight_success">roleRight.jsp</result>
 		</action>
 	</package>
 </struts>

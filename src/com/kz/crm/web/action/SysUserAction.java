@@ -33,7 +33,10 @@ public class SysUserAction extends ActionSupport{
 		//System.out.println("进入SysUserAction...."+user);
 		//1,对用户名和密码进行验证
 		SysUser loginUser = us.login(user.getUsrName(),user.getUsrPassword());
-		System.out.println(loginUser);
+		//将登录用户对象保存到session中时，用户对象是没有关联到角色信息的
+		//jsp中是到session域中获取，所有即使配置了openSessionInView也不会有用！！！
+		loginUser.getSysRole().getRoleName();
+		//System.out.println("=========="+loginUser.getSysRole());
 		//2,将用户对象保存到session中
 		ServletActionContext.getRequest().getSession().setAttribute(Const.LOGIN_USER, loginUser);
 		//3,得到该用户的角色---关联对象

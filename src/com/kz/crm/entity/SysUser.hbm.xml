@@ -11,7 +11,7 @@
             <column name="usr_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="sysRole" class="com.kz.crm.entity.SysRole" lazy="false">
+        <many-to-one name="sysRole" class="com.kz.crm.entity.SysRole" >
             <column name="usr_role_id" />
         </many-to-one>
         <property name="usrName" type="java.lang.String">

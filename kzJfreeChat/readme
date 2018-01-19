@@ -1,0 +1,8 @@
+1,如果要与struts2整合 需要3个包
+	jfreeChart.jar
+	jCommons.jar
+	struts2-jfreechart-plugin.jar
+2,需要将图标显示在jsp中只需要加入：
+	jfreeChart.jar
+	jCommons.jar
+

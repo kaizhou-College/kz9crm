@@ -26,7 +26,7 @@
             <one-to-many class="com.kz.crm.entity.SysUser" />
         </set>
         <!-- private Set<SysRight> rights -->
-        <set name="rights" table="sys_role_right" inverse="true" cascade="all" lazy="false">
+        <set name="rights" table="sys_role_right" inverse="true" cascade="all" >
         	<key column="rf_role_id"></key>
         	<many-to-many class="com.kz.crm.entity.SysRight" column="rf_right_code"></many-to-many>
         </set>

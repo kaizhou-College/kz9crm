@@ -42,6 +42,30 @@
 	 关系：
 	 	sys_user与sys_role是多对一
 	 	sys_role与sys_rights是多对多
+========================================================
+一，权限管理反选和权限
+
+	jQuery:
+
+二，openSessionInView配置不起作用？
+	注意：openSessionInView配置必须放到struts2配置的前面
+		 否者无效！！！
+三，struts配置支持中支持：/
+	常量配置：
+		#action的name中支持/
+		struts.enable.SlashesInActionNames=true
+		#（默认false） 是否总是用最后一个斜线前的URL段作为namespace
+		struts.mapper.alwaysSelectFullNamespace=false
+	NOTE：两个必须同时配置，否者无效
+四，统计报表功能：怎么样根据数据产生图标？
+	图标框架：jFreeChat
+		jfreechart-1.0.13.jar
+		jcommon.jar
+		
+	NOTE：1,struts配置是继承jfreechart-default
+	
+五，统计报表功能:java生成pdf和excel?
+
 
 	 	
 	 

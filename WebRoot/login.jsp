@@ -90,7 +90,7 @@
 			<IMG SRC="html/images/login/login_09.jpg" WIDTH=15 HEIGHT=141 ALT=""></TD>
 		
     <TD COLSPAN=2 ROWSPAN=2 background="html/images/login/login_10.jpg" >
-<form  id="frm" action="html/user_login" method="post">
+<form  id="frm" action="html/user/login" method="post">
 <table width="100%">
         <tr> 
           <th>用户名</th>

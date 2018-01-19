@@ -17,7 +17,21 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext*.xml</param-value>
 	</context-param>
-	
+	<!--
+		web懒加载 Web懒加载 ，加载User对象 报错 Service层：事物结束 session关闭 解决方案： 
+		1）改为及时加载get或者手动初始化对象 
+		2）关闭懒加载 lazy=false 
+		3）使用openSessionInView （推荐）
+			spring提供的过滤器,可以在web层开启事物
+	-->
+	<filter>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 	
 
@@ -33,21 +47,7 @@
 	</filter-mapping>
 
 
-<!--
-		web懒加载 Web懒加载 ，加载User对象 报错 Service层：事物结束 session关闭 解决方案： 
-		1）改为及时加载get或者手动初始化对象 
-		2）关闭懒加载 lazy=false 
-		3）使用openSessionInView 
-			spring提供的过滤器,可以在web层开启事物
-	-->
-	<filter>
-		<filter-name>OpenSessionInViewFilter</filter-name>
-		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>OpenSessionInViewFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
